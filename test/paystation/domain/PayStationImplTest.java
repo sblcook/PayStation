@@ -199,7 +199,7 @@ public class PayStationImplTest {
     public void cancelClearMap() throws IllegalCoinException {
         ps.addPayment(5);
 
-        assertEquals(0, ps.cancel().size());
+        assertEquals(0, ps.cancel().get(5).intValue());
     }
 
 
