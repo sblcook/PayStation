@@ -75,9 +75,7 @@ public class PayStationImpl implements PayStation {
         if (coinValues.containsKey(25))
             returnCoinValues.put(25, coinValues.get(25));
 
-        coinValues.put(5, 0);
-        coinValues.put(10, 0);
-        coinValues.put(25, 0);
+        clearCoinValuesMap();
 
         return returnCoinValues;
     }
@@ -92,5 +90,11 @@ public class PayStationImpl implements PayStation {
         insertedSoFar = 0;
         timeBought = 0;
         return tempInsertedSoFar;
+    }
+
+    public void clearCoinValuesMap() {
+        coinValues.put(5, 0);
+        coinValues.put(10, 0);
+        coinValues.put(25, 0);
     }
 }
