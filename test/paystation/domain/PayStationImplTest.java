@@ -156,7 +156,13 @@ public class PayStationImplTest {
     @Test
     public void returnAmountEnteredIsWrong() throws IllegalCoinException{
         ps.addPayment(25);
-//        ps.addPayment(5);
         assertNotEquals(10, ps.empty());
+    }
+
+    @Test
+    public void emtpyResestsTotalToZero() throws IllegalCoinException {
+        ps.addPayment(25);
+        ps.empty();
+        assertEquals(0, ps.readDisplay());
     }
 }
