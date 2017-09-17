@@ -58,6 +58,8 @@ public class PayStationImpl implements PayStation {
         reset();
         Map coinValues = new HashMap();
         coinValues.put(5, 1);
+        coinValues.put(10, 1);
+        coinValues.put(25, 1);
         return coinValues;
     }
     
