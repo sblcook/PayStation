@@ -139,11 +139,17 @@ public class PayStationImplTest {
                 10, ps.readDisplay());
     }
 
-    @Test
-    public void emptyAmountEntered() throws IllegalCoinException {
-        ps.addPayment(25);
-        ps.empty();
-        assertEquals(0, ps.readDisplay());
+//    @Test
+//    public void emptyAmountEntered() throws IllegalCoinException {
+//        ps.addPayment(25);
+//        ps.empty();
+//        assertEquals(0, ps.readDisplay());
+//
+//    }
 
+    @Test
+    public void returnAmountEntered() throws IllegalCoinException {
+        ps.addPayment(10);
+        assertEquals(10, ps.empty());
     }
 }
