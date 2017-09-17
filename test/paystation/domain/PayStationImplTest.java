@@ -138,4 +138,12 @@ public class PayStationImplTest {
         assertEquals("Insert after cancel should work",
                 10, ps.readDisplay());
     }
+
+    @Test
+    public void emptyAmountEntered() throws IllegalCoinException {
+        ps.addPayment(25);
+        ps.empty();
+        assertEquals(0, ps.readDisplay());
+
+    }
 }
