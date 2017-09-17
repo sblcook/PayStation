@@ -19,6 +19,8 @@
  */
 package paystation.domain;
 
+import java.util.Map;
+
 public interface PayStation {
 
     /**
@@ -28,7 +30,7 @@ public interface PayStation {
      * is, a quarter is coinValue=25, etc.
      * @throws IllegalCoinException in case coinValue is not a valid coin value
      */
-    public void addPayment(int coinValue) throws IllegalCoinException;
+    void addPayment(int coinValue) throws IllegalCoinException;
 
     /**
      * Read the machine's display. The display shows a numerical description of
@@ -36,7 +38,7 @@ public interface PayStation {
      *
      * @return the number to display on the pay station display
      */
-    public int readDisplay();
+    int readDisplay();
 
     /**
      * Buy parking time. Terminate the ongoing transaction and return a parking
@@ -44,16 +46,22 @@ public interface PayStation {
      *
      * @return a valid parking receipt object.
      */
-    public Receipt buy();
+    Receipt buy();
 
-    /**
-     * Cancel the present transaction. Resets the machine for a new transaction.
+    /** Cancel the present transaction. Resets the paystation for a
+     * new transaction.
+     * @return A Map defining the coins returned to the user.
+     * The key is the coin type and the associated value is the
+     * number of these coins that are returned.
+     * The Map object is never null even if no coins are returned.
+     * The Map will only contain only keys for coins to be returned.
+     * The Map will be cleared after a cancel or buy.
      */
-    public void cancel();
+    Map<Integer, Integer> cancel();
 
     /**
     returns the total amount of money collected by the paystation since the last call and empties it,
     setting the total to zero. Note that money is only collected after a call to buy.
     */
-    public int empty();
+    int empty();
 }
