@@ -66,6 +66,7 @@ public class PayStationImpl implements PayStation {
     @Override
     public Map<Integer, Integer> cancel() {
         reset();
+        coinValues.clear();
         return coinValues;
     }
     
