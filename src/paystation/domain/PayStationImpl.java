@@ -66,9 +66,9 @@ public class PayStationImpl implements PayStation {
 
     @Override
     public int empty() {
-//        int tempInsertedSoFar = insertedSoFar;
-//        insertedSoFar = 0;
-//        timeBought = 0;
+        int tempInsertedSoFar = insertedSoFar;
+        insertedSoFar = 0;
+        timeBought = 0;
         return insertedSoFar;
     }
 }
