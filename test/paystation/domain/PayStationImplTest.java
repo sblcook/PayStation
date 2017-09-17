@@ -169,7 +169,7 @@ public class PayStationImplTest {
     @Test
     public void cancelReturnsMapWithOneCoin() throws IllegalCoinException {
         ps.addPayment(5);
-        assertEquals(1, ps.cancel().size());
+        assertEquals(1, ps.cancel().get(5).intValue());
     }
 
     @Test
@@ -177,7 +177,9 @@ public class PayStationImplTest {
         ps.addPayment(25);
         ps.addPayment(5);
         ps.addPayment(10);
-        assertEquals(3, ps.cancel().size());
+        assertEquals(1, ps.cancel().get(25).intValue());
+        assertEquals(1, ps.cancel().get(5).intValue());
+        assertEquals(1, ps.cancel().get(10).intValue());
     }
 
     @Test
