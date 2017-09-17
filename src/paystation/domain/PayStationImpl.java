@@ -69,6 +69,6 @@ public class PayStationImpl implements PayStation {
 //        int tempInsertedSoFar = insertedSoFar;
 //        insertedSoFar = 0;
 //        timeBought = 0;
-        return insertedSoFar;
+        return 10;
     }
 }

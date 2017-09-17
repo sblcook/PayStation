@@ -152,4 +152,10 @@ public class PayStationImplTest {
         ps.addPayment(10);
         assertEquals(10, ps.empty());
     }
+
+    @Test
+    public void returnAmountEnteredIsWrong() throws IllegalCoinException{
+        ps.addPayment(25);
+        assertNotEquals(10, ps.readDisplay());
+    }
 }
