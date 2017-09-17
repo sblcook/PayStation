@@ -172,6 +172,13 @@ public class PayStationImplTest {
         assertEquals(1, ps.cancel().size());
     }
 
+    @Test
+    public void cancelReturnsMapWithMultipleCoins() throws IllegalCoinException {
+        ps.addPayment(25);
+        ps.addPayment(5);
+        ps.addPayment(10);
 
+        assertEquals(3, ps.cancel().size());
+    }
 
 }
