@@ -75,6 +75,9 @@ public class PayStationImpl implements PayStation {
         if (coinValues.containsKey(25))
             returnCoinValues.put(25, coinValues.get(25));
 
+        coinValues.put(5, 0);
+        coinValues.put(10, 0);
+        coinValues.put(25, 0);
 
         return returnCoinValues;
     }

@@ -15,6 +15,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PayStationImplTest {
 
     PayStation ps;
@@ -177,9 +180,12 @@ public class PayStationImplTest {
         ps.addPayment(25);
         ps.addPayment(5);
         ps.addPayment(10);
-        assertEquals(1, ps.cancel().get(25).intValue());
-        assertEquals(1, ps.cancel().get(5).intValue());
-        assertEquals(1, ps.cancel().get(10).intValue());
+
+        Map<Integer, Integer> coinValues = ps.cancel();
+
+        assertEquals(1, coinValues.get(5).intValue());
+        assertEquals(1, coinValues.get(10).intValue());
+        assertEquals(1, coinValues.get(25).intValue());
     }
 
     @Test
@@ -190,14 +196,17 @@ public class PayStationImplTest {
         ps.addPayment(10);
         ps.addPayment(25);
 
-        assertEquals(2, ps.cancel().get(5).intValue());
-        assertEquals(2, ps.cancel().get(10).intValue());
-        assertEquals(1, ps.cancel().get(25).intValue());
+        Map<Integer, Integer> coinValues = ps.cancel();
+
+        assertEquals(2, coinValues.get(5).intValue());
+        assertEquals(2, coinValues.get(10).intValue());
+        assertEquals(1, coinValues.get(25).intValue());
     }
 
     @Test
     public void cancelClearMap() throws IllegalCoinException {
         ps.addPayment(5);
+        ps.cancel();
 
         assertEquals(0, ps.cancel().get(5).intValue());
     }
