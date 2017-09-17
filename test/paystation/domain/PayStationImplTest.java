@@ -195,5 +195,12 @@ public class PayStationImplTest {
         assertEquals(1, ps.cancel().get(25).intValue());
     }
 
+    @Test
+    public void cancelClearMap() throws IllegalCoinException {
+        ps.addPayment(5);
+
+        assertEquals(0, ps.cancel().size());
+    }
+
 
 }
