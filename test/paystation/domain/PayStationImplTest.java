@@ -183,8 +183,16 @@ public class PayStationImplTest {
     }
 
     @Test
-    public void cancelReturnsCorrectMap() {
+    public void cancelReturnsCorrectMap() throws IllegalCoinException {
+        ps.addPayment(5);
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(10);
+        ps.addPayment(25);
 
+        assertEquals(2, ps.cancel().get(5).intValue());
+        assertEquals(2, ps.cancel().get(10).intValue());
+        assertEquals(1, ps.cancel().get(25).intValue());
     }
 
 
