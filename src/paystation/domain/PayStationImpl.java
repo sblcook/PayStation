@@ -66,8 +66,17 @@ public class PayStationImpl implements PayStation {
     @Override
     public Map<Integer, Integer> cancel() {
         reset();
-        coinValues.clear();
-        return coinValues;
+
+        Map returnCoinValues = new HashMap();
+        if (coinValues.containsKey(5))
+            returnCoinValues.put(5, coinValues.get(5));
+        if (coinValues.containsKey(10))
+            returnCoinValues.put(10, coinValues.get(10));
+        if (coinValues.containsKey(25))
+            returnCoinValues.put(25, coinValues.get(25));
+
+
+        return returnCoinValues;
     }
     
     private void reset() {
