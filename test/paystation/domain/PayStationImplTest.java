@@ -165,4 +165,13 @@ public class PayStationImplTest {
         ps.empty();
         assertEquals(0, ps.readDisplay());
     }
+
+    @Test
+    public void cancelReturnsMapWithOneCoin() throws IllegalCoinException {
+        ps.addPayment(5);
+        assertEquals(1, ps.cancel().size());
+    }
+
+
+
 }
