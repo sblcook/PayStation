@@ -60,6 +60,7 @@ public class PayStationImpl implements PayStation {
     public Receipt buy() {
         Receipt r = new ReceiptImpl(timeBought);
         reset();
+        clearCoinValuesMap();
         return r;
     }
 
