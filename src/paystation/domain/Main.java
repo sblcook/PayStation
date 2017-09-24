@@ -47,6 +47,14 @@ public class Main {
                 case 3:
                     Receipt receipt = payStation.buy();
 
+                    System.out.println("-----------------------------------");
+                    System.out.println("Thank you for using PayStation!");
+                    System.out.println("Your parking receipt:");
+                    System.out.println("Time bought: " + receipt.value() + " minutes");
+                    System.out.println("Have a nice day!");
+                    System.out.println("-----------------------------------");
+
+                    continueBool = false;
                     break;
                 case 4:
                     Map<Integer, Integer> returnCoinValues = payStation.cancel();
@@ -74,7 +82,7 @@ public class Main {
                     System.out.println("Amount of dimes returned: " + dimeAmount);
                     System.out.println("Amount of quarters returned: " + quarterAmount);
                     int totalCoinValue = (nickelAmount*5) + (dimeAmount*10) + (quarterAmount*25);
-                    System.out.println("Total value of coins returned (dollars): " +totalCoinValue / 100);
+                    System.out.println("Total value of coins returned : $" +totalCoinValue / 100.0);
 
                     System.out.println("Have a nice day!");
                     continueBool = false;
