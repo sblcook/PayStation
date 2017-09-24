@@ -32,7 +32,7 @@ public class PayStationImpl implements PayStation {
     public void addPayment(int coinValue)
             throws IllegalCoinException {
         switch (coinValue) {
-            case 5:
+             case 5:
                 int fiveCount = coinValues.containsKey(5) ? coinValues.get(5) : 0;
                 coinValues.put(5, fiveCount + 1);
                 break;
