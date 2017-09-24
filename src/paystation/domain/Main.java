@@ -87,6 +87,13 @@ public class Main {
                     System.out.println("Have a nice day!");
                     continueBool = false;
                     break;
+                case 5: //change payment strat
+                    System.out.println("still needed");
+                    break;
+                default:
+                    System.out.println("Invalid option! Returning to main menu.");
+                    System.out.println();
+                    break;
 
             }
         }
