@@ -19,14 +19,14 @@ public class RateStrategyImpl implements RateStrategy{
                     timeBought = insertedSoFar / 5 * 1.5;
                 }
                 else { //third hour and beyond
-
+                    timeBought = insertedSoFar / 5;
                 }
                 break;
             case alternating:
 
                 break;
             default:
-                timeBought = 0;
+                timeBought = insertedSoFar;
                 break;
         }
         return timeBought;
