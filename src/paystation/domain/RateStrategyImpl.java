@@ -1,9 +1,13 @@
 package paystation.domain;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class RateStrategyImpl implements RateStrategy{
 
     private String rateStrategy = linear; //default to linear rate strategy
     private double timeBought;
+    Calendar calendar = new GregorianCalendar();
 
     @Override
     public double calculateTime(int insertedSoFar){
@@ -47,7 +51,13 @@ public class RateStrategyImpl implements RateStrategy{
     @Override
     public double calculateAlternating(int insertedSoFar){
         //math goes here
-        return 0;
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        if(dayOfWeek == 1 || dayOfWeek == 7){
+            timeBought = calculateLinear(insertedSoFar);
+        } else if (dayOfWeek > 1 && dayOfWeek < 7){
+            timeBought = calculateProgressive(insertedSoFar);
+        }
+        return timeBought;
     }
 
     @Override
