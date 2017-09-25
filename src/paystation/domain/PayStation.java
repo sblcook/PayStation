@@ -64,4 +64,6 @@ public interface PayStation {
     setting the total to zero. Note that money is only collected after a call to buy.
     */
     int empty();
+
+    void changeRateStrategy(String newRateStrategy); //change the rate strategy
 }

@@ -88,7 +88,26 @@ public class Main {
                     continueBool = false;
                     break;
                 case 5: //change payment strat
-                    System.out.println("still needed");
+                    System.out.println();
+                    System.out.println("Here are the current rate strategies");
+                    System.out.println("\t1) Linear (Alphatown)");
+                    System.out.println("\t2) Progressive (Betatown)");
+                    System.out.println("\t3) Alternating (Gammatown)");
+                    System.out.print("Enter your desired rate strategy or 0 to exit: ");
+
+                    int desiredRateStrategy = keyboard.nextInt();
+                    if(desiredRateStrategy == 0)
+                        break;
+                    else if(desiredRateStrategy < 4 && desiredRateStrategy > 0) {
+                        if(desiredRateStrategy == 1)
+                            payStation.changeRateStrategy("Linear");
+                        else if(desiredRateStrategy == 2)
+                            payStation.changeRateStrategy("Progressive");
+                        else if(desiredRateStrategy == 3)
+                            payStation.changeRateStrategy("Alternating");
+                        System.out.println("Rate strategy changed! Returning to main menu!");
+                    }
+
                     break;
                 default: //invalid option
                     System.out.println("Invalid option! Returning to main menu.");
