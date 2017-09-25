@@ -65,5 +65,5 @@ public interface PayStation {
     */
     int empty();
 
-    void changeRateStrategy(String newRateStrategy); //change the rate strategy
+    void changeRateStrategy(RateStrategy newRateStrategy); //change the rate strategy
 }

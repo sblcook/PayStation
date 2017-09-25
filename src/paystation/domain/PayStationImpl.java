@@ -105,8 +105,8 @@ public class PayStationImpl implements PayStation {
         coinValues.put(25, 0);
     }
 
-    @Override
-    public void changeRateStrategy(String newRateStrategy){
+
+    public void changeRateStrategy(RateStrategy newRateStrategy){
         rateStrategy.changeRateStrategy(newRateStrategy);
     }
 }
