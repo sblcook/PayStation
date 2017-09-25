@@ -9,27 +9,45 @@ public class RateStrategyImpl implements RateStrategy{
     public double calculateTime(int insertedSoFar){
         switch (rateStrategy) {
             case linear:
-                timeBought = insertedSoFar / 5 * 2;
+                timeBought = calculateLinear(insertedSoFar);
                 break;
             case progressive:
-                if(insertedSoFar < 150){ //first hour
-                    timeBought = insertedSoFar / 5 * 2;
-                }
-                else if (insertedSoFar > 350){//second hour
-                    timeBought = insertedSoFar / 5 * 1.5;
-                }
-                else { //third hour and beyond
-                    timeBought = insertedSoFar / 5;
-                }
+                timeBought = calculateProgressive(insertedSoFar);
                 break;
             case alternating:
-
+                timeBought = calculateAlternating(insertedSoFar);
                 break;
             default:
                 timeBought = insertedSoFar;
                 break;
         }
         return timeBought;
+    }
+
+    @Override
+    public double calculateLinear(int insertedSoFar){
+        return insertedSoFar / 5 * 2;
+    }
+
+    @Override
+    public double calculateProgressive(int insertedSoFar){
+
+        if(insertedSoFar < 150){ //first hour
+            timeBought = calculateLinear(insertedSoFar);
+        }
+        else if (insertedSoFar > 350){//second hour
+            timeBought = insertedSoFar / 5 * 1.5;
+        }
+        else { //third hour and beyond
+            timeBought = insertedSoFar / 5;
+        }
+        return timeBought;
+    }
+
+    @Override
+    public double calculateAlternating(int insertedSoFar){
+        //math goes here
+        return 0;
     }
 
     @Override

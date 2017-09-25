@@ -10,4 +10,10 @@ public interface RateStrategy {
     void changeRateStrategy(String newRateStrategy);
 
     double calculateTime(int insertedSoFar);
+
+    double calculateLinear(int insertedSoFar);
+
+    double calculateProgressive(int insertedSoFar);
+
+    double calculateAlternating(int insertedSoFar);
 }
