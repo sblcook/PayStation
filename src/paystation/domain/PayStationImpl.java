@@ -25,8 +25,9 @@ import java.util.Map;
 public class PayStationImpl implements PayStation {
     
     private int insertedSoFar;
-    private int timeBought;
+    private double timeBought;
     private Map<Integer, Integer> coinValues = new HashMap<>();
+    RateStrategyImpl rateStrategy = new RateStrategyImpl();
 
     public static void main(String args[]){
 
@@ -52,11 +53,12 @@ public class PayStationImpl implements PayStation {
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
         insertedSoFar += coinValue;
-        timeBought = insertedSoFar / 5 * 2;
+
+        timeBought = rateStrategy.calculateTime(insertedSoFar);
     }
 
     @Override
-    public int readDisplay() {
+    public double readDisplay() {
         return timeBought;
     }
 

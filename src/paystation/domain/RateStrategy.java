@@ -2,8 +2,12 @@ package paystation.domain;
 
 public interface RateStrategy {
 
-    //changes rate strategy between linear, progressive, or mixed
-    void changeRateStrategy();
+    String linear = "Linear";
+    String progressive = "Progressive";
+    String alternating = "Alternating";
 
-    int calculateTime(int insertedSoFar);
+    //changes rate strategy between linear, progressive, or mixed
+    void changeRateStrategy(String newRateStrategy);
+
+    double calculateTime(int insertedSoFar);
 }
