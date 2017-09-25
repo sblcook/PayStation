@@ -24,7 +24,7 @@ public class Main {
             int actionInput = keyboard.nextInt();
 
             switch (actionInput){
-                case 1:
+                case 1: //insert coins
                     System.out.println("We accept 5, 10, and 25 cent coins.");
                     while(true) {
                         System.out.print("Please enter the amount or 0 to finish inserting coins: ");
@@ -40,11 +40,11 @@ public class Main {
                     }
                     System.out.println();
                     break;
-                case 2:
+                case 2: //display time
                     System.out.println("Your time (in minutes): " + payStation.readDisplay());
                     System.out.println();
                     break;
-                case 3:
+                case 3: //buy
                     Receipt receipt = payStation.buy();
 
                     System.out.println("-----------------------------------");
@@ -56,7 +56,7 @@ public class Main {
 
                     continueBool = false;
                     break;
-                case 4:
+                case 4: //cancel
                     Map<Integer, Integer> returnCoinValues = payStation.cancel();
                     int nickelAmount;
                     int dimeAmount;
@@ -90,7 +90,7 @@ public class Main {
                 case 5: //change payment strat
                     System.out.println("still needed");
                     break;
-                default:
+                default: //invalid option
                     System.out.println("Invalid option! Returning to main menu.");
                     System.out.println();
                     break;
