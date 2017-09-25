@@ -39,10 +39,10 @@ public class RateStrategyImpl implements RateStrategy{
         if(insertedSoFar < 150){ //first hour
             timeBought = calculateLinear(insertedSoFar);
         }
-        else if (insertedSoFar > 350){//second hour
+        else if (insertedSoFar > 150){//second hour
             timeBought = insertedSoFar / 5 * 1.5;
         }
-        else { //third hour and beyond
+        else if (insertedSoFar > 350) { //third hour and beyond
             timeBought = insertedSoFar / 5;
         }
         return timeBought;

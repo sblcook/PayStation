@@ -100,11 +100,11 @@ public class Main {
                         break;
                     else if(desiredRateStrategy < 4 && desiredRateStrategy > 0) {
                         if(desiredRateStrategy == 1)
-                            payStation.changeRateStrategy("Linear");
+                            payStation.changeRateStrategy(RateStrategy.linear);
                         else if(desiredRateStrategy == 2)
-                            payStation.changeRateStrategy("Progressive");
+                            payStation.changeRateStrategy(RateStrategy.progressive);
                         else if(desiredRateStrategy == 3)
-                            payStation.changeRateStrategy("Alternating");
+                            payStation.changeRateStrategy(RateStrategy.alternating);
                         System.out.println("Rate strategy changed! Returning to main menu!");
                     }
 
