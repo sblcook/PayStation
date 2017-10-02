@@ -25,12 +25,11 @@ import java.util.Map;
 public class PayStationImpl implements PayStation {
     
     private int insertedSoFar;
-    private double timeBought;
     private Map<Integer, Integer> coinValues = new HashMap<>();
-    RateStrategyImpl rateStrategy = new RateStrategyImpl();
+    RateStrategy rateStrategy;
 
-    public static void main(String args[]){
-
+    PayStationImpl(){
+        this.rateStrategy = new LinearRateStrategy(); //default to linear rate strategy
     }
 
     @Override
@@ -54,17 +53,16 @@ public class PayStationImpl implements PayStation {
         }
         insertedSoFar += coinValue;
 
-        timeBought = rateStrategy.calculateTime(insertedSoFar);
     }
 
     @Override
     public double readDisplay() {
-        return timeBought;
+        return rateStrategy.calculateTime(insertedSoFar);
     }
 
     @Override
     public Receipt buy() {
-        Receipt r = new ReceiptImpl(timeBought);
+        Receipt r = new ReceiptImpl(rateStrategy.calculateTime(insertedSoFar));
         reset();
         clearCoinValuesMap();
         return r;
@@ -88,14 +86,13 @@ public class PayStationImpl implements PayStation {
     }
     
     private void reset() {
-        timeBought = insertedSoFar = 0;
+        insertedSoFar = 0;
     }
 
     @Override
     public int empty() {
         int tempInsertedSoFar = insertedSoFar;
         insertedSoFar = 0;
-        timeBought = 0;
         return tempInsertedSoFar;
     }
 
@@ -107,6 +104,6 @@ public class PayStationImpl implements PayStation {
 
 
     public void changeRateStrategy(RateStrategy newRateStrategy){
-        rateStrategy.changeRateStrategy(newRateStrategy);
+        rateStrategy = newRateStrategy;
     }
 }
